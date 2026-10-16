@@ -1,0 +1,441 @@
+/* ==========================================
+   Butterfly 彩色明媚液态玻璃风
+   顶部透明，露出蜡笔小新网站背景
+   ========================================== */
+
+/* 全局变量：明亮彩色玻璃 */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.50);
+  --glass-border-soft: rgba(255, 255, 255, 0.30);
+  --glass-shadow: 0 10px 40px rgba(72, 128, 255, 0.16);
+  --glass-shadow-hover: 0 18px 55px rgba(255, 126, 194, 0.32);
+
+  --color-blue: #4aa3ff;
+  --color-pink: #ff7ab8;
+  --color-purple: #b794ff;
+  --color-yellow: #ffd56b;
+  --color-green: #7cffcb;
+
+  --text-main: #2c3e50;
+  --text-sub: #5a6a7a;
+}
+
+/* ---------- 所有页面头部：完全透明，露出蜡笔小新背景 ---------- */
+#page-header {
+  background: transparent !important;
+  background-image: none !important;
+}
+#page-header.full_page {
+  overflow: hidden;
+}
+/* 头图层与默认渐变遮罩全部关闭（功能页 header 是 not-home-page，不是 full_page） */
+#page-header::before,
+#page-header::after,
+#page-header .page-header-bg,
+.page-header-bg {
+  background: none !important;
+  background-image: none !important;
+}
+
+/* ---------- 标题文字盒子：彩色液态玻璃 ---------- */
+#page-header #site-info {
+  background: rgba(255, 255, 255, 0.10) !important;
+  backdrop-filter: saturate(150%) !important;
+  -webkit-backdrop-filter: saturate(150%) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -12px 30px rgba(255, 255, 255, 0.18) !important;
+  padding: 2.2rem 3rem !important;
+  width: fit-content !important;
+  max-width: 88% !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  position: absolute;
+  z-index: 2;
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.9, 0.25, 1.2),
+    box-shadow 0.5s ease,
+    border-color 0.4s ease;
+}
+#page-header #site-info:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    var(--glass-shadow-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -15px 35px rgba(255, 255, 255, 0.22);
+}
+#page-header #site-info::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  border-radius: 50%;
+  opacity: 0.9;
+}
+#page-header #site-title,
+#page-header #site-subtitle {
+  color: #1f2d3d !important;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- 导航栏：明亮透明玻璃 ---------- */
+#nav,
+#nav.show,
+#nav.black,
+#nav.fixed,
+#nav.nav-fixed {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: saturate(150%) !important;
+  -webkit-backdrop-filter: saturate(150%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(72, 128, 255, 0.14) !important;
+  transition: all 0.4s ease;
+}
+#nav a,
+#nav span {
+  color: #2c3e50 !important;
+}
+[data-theme="dark"] #nav a,
+[data-theme="dark"] #nav span {
+  color: #ffffff !important;
+}
+
+/* ---------- 首页文章卡片：彩色液态玻璃 ---------- */
+.article-item {
+  background: rgba(255, 255, 255, 0.10) !important;
+  backdrop-filter: saturate(150%) !important;
+  -webkit-backdrop-filter: saturate(150%) !important;
+  border: 1px solid var(--glass-border-soft) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.9, 0.25, 1.2),
+    box-shadow 0.5s ease,
+    border-color 0.4s ease;
+}
+.article-item:hover {
+  transform: translateY(-8px) scale(1.018);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: var(--glass-shadow-hover);
+}
+.article-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-blue), var(--color-pink), var(--color-purple), var(--color-yellow), transparent);
+  background-size: 200% 100%;
+  animation: rainbowMove 6s linear infinite;
+  transition: left 0.6s ease;
+}
+.article-item:hover::before { left: 0; }
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.article-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+.article-item:hover::after { left: 120%; }
+
+/* ---------- 页脚：透明玻璃 ---------- */
+#footer {
+  background: transparent !important;
+  text-align: center;
+}
+#footer::before {
+  background: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: saturate(140%) !important;
+  -webkit-backdrop-filter: saturate(140%) !important;
+  border-top: 1px solid var(--glass-border) !important;
+}
+#footer-wrap,
+#footer-wrap a {
+  color: #2c3e50 !important;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+}
+#footer-wrap a:hover { color: var(--color-pink) !important; }
+
+/* 页脚版权文字 圆角玻璃框 */
+.footer-copyright {
+  display: inline-block !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: saturate(140%) !important;
+  -webkit-backdrop-filter: saturate(140%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+  border-radius: 22px !important;
+  padding: 12px 34px !important;
+  box-shadow: 0 8px 26px rgba(72, 128, 255, 0.18) !important;
+}
+.footer-copyright,
+.footer-copyright a,
+.footer-copyright span {
+  color: #1a1a1a !important;
+  text-shadow: none !important;
+}
+[data-theme="dark"] .footer-copyright,
+[data-theme="dark"] .footer-copyright a,
+[data-theme="dark"] .footer-copyright span {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- 可爱字体（幼圆） ---------- */
+#site-title {
+  font-family: "YouYuan", "幼圆", "STHupo", "华文琥珀", "Microsoft YaHei", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 4px !important;
+  color: #1f3b63 !important;
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.9),
+    0 5px 14px rgba(0, 0, 0, 0.18);
+}
+#site-subtitle {
+  font-family: "YouYuan", "幼圆", "STHupo", "华文琥珀", "Microsoft YaHei", sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 3px !important;
+  color: #2c3e50 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- 非首页页面标题玻璃胶囊 ---------- */
+#page-header.not-home-page { text-align: center; }
+#page-header.not-home-page #site-title {
+  position: relative;
+  display: inline-block !important;
+  padding: 16px 36px !important;
+  margin-top: 40px;
+  isolation: isolate;
+}
+#page-header.not-home-page #site-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: saturate(150%);
+  -webkit-backdrop-filter: saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(72, 128, 255, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ========== 全局背景：固定层铺满，杜绝"一半有图一半没图" ========== */
+body {
+  background-color: #ffffff !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('/img/bg001.jpg') center center / cover no-repeat !important;
+}
+#web_bg,
+.bg-animation {
+  display: none !important;
+}
+[data-theme="dark"] body {
+  background-color: #171a21 !important;
+}
+
+/* ============================================================
+   功能页 UI（标签 / 关于 / 归档 / 分类 / 文章）— 干净重写
+   外层容器完全透明，只有内容卡片用极轻玻璃
+   ============================================================ */
+
+/* 外层布局容器：完全透明，绝不用色块遮挡背景 */
+#body-wrap,
+#content-inner,
+main.layout,
+.layout,
+#aside-content,
+.aside-content,
+#recent-posts,
+.recent-posts {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 内容卡片：轻微透明玻璃（不磨砂、不遮挡背景） */
+.card-widget,
+.recent-post-item,
+.post-content,
+#article-container,
+#post,
+.archive-item,
+.archives,
+#archive,
+.tag-cloud,
+.category-list,
+.category-lists,
+.pagination,
+.post-nav,
+.pagination-related {
+  background: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: saturate(140%) !important;
+  -webkit-backdrop-filter: saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(72, 128, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .card-widget,
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] .post-content,
+[data-theme="dark"] #article-container,
+[data-theme="dark"] #post,
+[data-theme="dark"] .archive-item,
+[data-theme="dark"] .archives,
+[data-theme="dark"] #archive,
+[data-theme="dark"] .tag-cloud,
+[data-theme="dark"] .category-list,
+[data-theme="dark"] .category-lists,
+[data-theme="dark"] .pagination-related {
+  background: rgba(20, 26, 36, 0.30) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+/* 归档时间线条目：透明（不套卡片，保持时间线轻盈） */
+.archives .archive-item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 标签云：可爱小胶囊 */
+.tag-cloud a {
+  display: inline-block;
+  margin: 6px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  color: #1f3b63 !important;
+  font-family: "YouYuan", "幼圆", sans-serif !important;
+  transition: all 0.3s ease;
+}
+.tag-cloud a:hover {
+  background: rgba(255, 122, 184, 0.4) !important;
+  transform: translateY(-2px);
+  color: #fff !important;
+}
+
+/* 侧边栏抽屉菜单 */
+#sidebar-menus,
+.sidebar-menus,
+.menus_items {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 14px !important;
+}
+
+/* ========== 全屏彩色泡泡画布定位 ========== */
+#bubbleCanvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* ========== 文章卡片/正文：60% 不透明，兼顾通透与可读 ========== */
+.recent-post-item,
+.post-content,
+#article-container,
+#post {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(6px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 10px 30px rgba(72, 128, 255, 0.16) !important;
+}
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] .post-content,
+[data-theme="dark"] #article-container,
+[data-theme="dark"] #post {
+  background: rgba(28, 32, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+/* 文章正文文字颜色加深，更易读 */
+#article-container,
+#article-container p {
+  color: #2c3e50 !important;
+}
+[data-theme="dark"] #article-container,
+[data-theme="dark"] #article-container p {
+  color: #e8eaed !important;
+}
+
+/* ========== 右侧侧边栏卡片：35% 不透明 ========== */
+#aside-content .card-widget {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+}
+[data-theme="dark"] #aside-content .card-widget {
+  background: rgba(28, 32, 42, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ========== about 页联系方式卡片：纯透明玻璃（无磨砂模糊） ========== */
+body.page-about #article-container {
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+[data-theme="dark"] body.page-about #article-container {
+  background: rgba(28, 32, 42, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ========== 全局鼠标光标：蜡笔小新（透明PNG矢量图） ========== */
+* {
+  cursor: url("https://aka.doubaocdn.com/s/xCEYfJTbVr") 20 20, auto !important;
+}
+a, button, .btn, [role="button"] {
+  cursor: url("https://aka.doubaocdn.com/s/xCEYfJTbVr") 20 20, pointer !important;
+}
+
+/* ========== 左上角站点标题：可爱圆润字体 ========== */
+.site-title,
+#site-title,
+#nav .site-title,
+.nav-site-title .site-name {
+  font-family: "YouYuan", "幼圆", "STYuanti", "华文圆体", "Yuanti SC", "YouHei", "Microsoft YaHei", sans-serif !important;
+  font-weight: bold !important;
+  letter-spacing: 1px;
+  color: #1f3b63 !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+}
+[data-theme="dark"] .site-title,
+[data-theme="dark"] #site-title {
+  color: #ffd56b !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
