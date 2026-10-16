@@ -503,11 +503,11 @@ a, button, .btn, [role="button"] {
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
   transform: rotate(-10deg);
 }
-/* 流光斜横线：和签名一体，同步闪光 */
+/* 流光斜横线：和签名一体，同步闪光，紧贴字母底部 */
 .avatar-img::before {
   content: "";
   position: absolute;
-  bottom: -14px;
+  bottom: -11px;
   right: -16px;
   width: 52px;
   height: 2px;
