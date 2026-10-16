@@ -459,10 +459,66 @@ a, button, .btn, [role="button"] {
 /* ========== 头像：平时不转，鼠标悬停时才开始旋转（6秒一圈） ========== */
 .avatar-img {
   animation: none !important;
+  overflow: visible !important;
+  position: relative;
 }
 .avatar-img img {
   transition: transform 0.4s ease;
 }
 .avatar-img:hover img {
   animation: avatar_turn_around 6s linear infinite !important;
+}
+
+/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj ========== */
+.avatar-img::after {
+  content: "Johnj";
+  position: absolute;
+  bottom: -10px;
+  right: -14px;
+  font-family: "Caveat", "Dancing Script", "Brush Script MT", cursive;
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 5;
+  /* 流光渐变文字 */
+  background: linear-gradient(
+    90deg,
+    #ffd700 0%,
+    #fff8dc 20%,
+    #ffec8b 40%,
+    #fffacd 50%,
+    #ffec8b 60%,
+    #fff8dc 80%,
+    #ffd700 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: signatureShimmer 2.5s linear infinite;
+  /* 发光阴影 */
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+  transform: rotate(-8deg);
+}
+/* 闪光扫过动画 */
+@keyframes signatureShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+/* 星星闪烁点缀 */
+.avatar-img::before {
+  content: "✦";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 12px;
+  color: #fff8dc;
+  z-index: 6;
+  text-shadow: 0 0 6px #ffd700, 0 0 12px #ffd700;
+  animation: starTwinkle 1.5s ease-in-out infinite;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }

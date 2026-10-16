@@ -911,6 +911,8 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/gradient-banner.css">
+    - <link rel="preconnect" href="https://fonts.googleapis.com">
+    - <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
   bottom:
     - <canvas id="bubbleCanvas"></canvas>
     - <script src="/js/bubble.js"></script>
