@@ -455,3 +455,8 @@ a, button, .btn, [role="button"] {
   color: #f0f2f5 !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
+
+/* ========== 头像旋转速度调慢：从 2 秒一圈改为 6 秒一圈 ========== */
+.avatar-img {
+  animation: avatar_turn_around 6s linear infinite !important;
+}
