@@ -471,12 +471,12 @@ a, button, .btn, [role="button"] {
   animation: avatar_turn_around 6s linear infinite !important;
 }
 
-/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj + 流光斜横线 + 小星星 ========== */
+/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj + 流光斜横线 + 右上角小星星 ========== */
 .avatar-img::after {
-  content: "Johnj ✦";
+  content: "Johnj";
   position: absolute;
   bottom: -10px;
-  right: -18px;
+  right: -16px;
   font-family: "Caveat", "Dancing Script", "Brush Script MT", cursive;
   font-size: 24px;
   font-weight: 700;
@@ -501,34 +501,29 @@ a, button, .btn, [role="button"] {
   animation: signatureShimmer 2.5s linear infinite;
   /* 发光阴影 */
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+  /* 签名下斜横线：和文字一体流光 */
+  padding-bottom: 2px;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.85);
   transform: rotate(-10deg);
 }
-/* 流光斜横线：和签名一体，同步闪光，紧贴字母底部 */
+/* 头像右上角小星星：小一点，星光迸溅 */
 .avatar-img::before {
-  content: "";
+  content: "✦";
   position: absolute;
-  bottom: -9px;
-  right: -18px;
-  width: 56px;
-  height: 2px;
-  z-index: 5;
-  background: linear-gradient(
-    90deg,
-    #ffd700 0%,
-    #fff8dc 20%,
-    #ffec8b 40%,
-    #fffacd 50%,
-    #ffec8b 60%,
-    #fff8dc 80%,
-    #ffd700 100%
-  );
-  background-size: 200% 100%;
-  animation: signatureShimmer 2.5s linear infinite;
-  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
-  transform: rotate(-10deg);
+  top: -8px;
+  right: -8px;
+  font-size: 10px;
+  color: #fff8dc;
+  z-index: 6;
+  text-shadow: 0 0 6px #ffd700, 0 0 12px #ffd700;
+  animation: starTwinkle 1.5s ease-in-out infinite;
 }
 /* 闪光扫过动画：签名和横线同步 */
 @keyframes signatureShimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
