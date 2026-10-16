@@ -439,3 +439,19 @@ a, button, .btn, [role="button"] {
   color: #ffd56b !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
+
+/* ========== 文章页头图标题/日期：跟随深浅色模式切换 ========== */
+/* 浅色模式：海滩背景是浅色，文字用深色更清晰 */
+#post-info .post-title,
+#post-info #post-meta,
+#post-info #post-meta a {
+  color: #2c3e50 !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
+}
+/* 深色模式：背景变深，文字用白色 */
+[data-theme="dark"] #post-info .post-title,
+[data-theme="dark"] #post-info #post-meta,
+[data-theme="dark"] #post-info #post-meta a {
+  color: #f0f2f5 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
