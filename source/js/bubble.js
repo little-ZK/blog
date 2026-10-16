@@ -27,10 +27,16 @@
   resize();
   window.addEventListener('resize', resize);
 
-  function Bubble(x, y) {
+  function Bubble(x, y, fromBottom) {
     this.x = (x !== undefined && x !== null) ? x : Math.random() * w;
-    // 如果没指定 y，让泡泡初始随机分布在整个屏幕高度，而不是全堆在底部
-    this.y = (y !== undefined && y !== null) ? y : Math.random() * h;
+    // fromBottom=true 时从屏幕底部冒出来，否则随机分布在屏幕各处
+    if (fromBottom) {
+      this.y = h + 30;
+    } else if (y !== undefined && y !== null) {
+      this.y = y;
+    } else {
+      this.y = Math.random() * h;
+    }
     this.radius = Math.random() * 22 + 6;
     this.color = colorList[Math.floor(Math.random() * colorList.length)];
     this.speedX = (Math.random() - 0.5) * 0.4;
@@ -82,7 +88,7 @@
     ctx.restore();
   };
 
-  var targetCount = 45;
+  var targetCount = 55;
 
   function init() {
     for (var i = 0; i < targetCount; i++) {
@@ -113,10 +119,10 @@
         bubbles[i].draw();
       }
     }
-    // 持续从底部补充新泡泡，保持一直有泡泡冒出来
+    // 持续从底部冒新泡泡，保持一直有泡泡上升
     spawnTimer++;
-    if (spawnTimer > 20 && bubbles.length < targetCount) {
-      bubbles.push(new Bubble());
+    if (spawnTimer > 12 && bubbles.length < targetCount + 10) {
+      bubbles.push(new Bubble(null, null, true));
       spawnTimer = 0;
     }
     requestAnimationFrame(animate);
