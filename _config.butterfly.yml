@@ -916,6 +916,7 @@ inject:
   bottom:
     - <canvas id="bubbleCanvas"></canvas>
     - <script src="/js/bubble.js"></script>
+    - <script src="/js/like.js"></script>
 
 # - <script src="xxxx"></script>
 # CDN Settings
