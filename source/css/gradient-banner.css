@@ -482,28 +482,19 @@ a, button, .btn, [role="button"] {
   font-weight: 700;
   white-space: nowrap;
   z-index: 5;
-  /* 流光渐变文字 */
-  background: linear-gradient(
-    90deg,
-    #ffd700 0%,
-    #fff8dc 20%,
-    #ffec8b 40%,
-    #fffacd 50%,
-    #ffec8b 60%,
-    #fff8dc 80%,
-    #ffd700 100%
-  );
+  /* 两层背景：文字流光 + 底部横线流光 */
+  background: 
+    linear-gradient(90deg, #ffd700 0%, #fff8dc 20%, #ffec8b 40%, #fffacd 50%, #ffec8b 60%, #fff8dc 80%, #ffd700 100%) 0 100% / 100% 2px no-repeat,
+    linear-gradient(90deg, #ffd700 0%, #fff8dc 20%, #ffec8b 40%, #fffacd 50%, #ffec8b 60%, #fff8dc 80%, #ffd700 100%);
   background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  -webkit-background-clip: text, border-box;
+  background-clip: text, border-box;
   -webkit-text-fill-color: transparent;
   color: transparent;
   animation: signatureShimmer 2.5s linear infinite;
   /* 发光阴影 */
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-  /* 签名下斜横线：和文字一体流光 */
   padding-bottom: 2px;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.85);
   transform: rotate(-10deg);
 }
 /* 头像右上角小星星：小一点，星光迸溅 */
@@ -520,10 +511,20 @@ a, button, .btn, [role="button"] {
 }
 /* 闪光扫过动画：签名和横线同步 */
 @keyframes signatureShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% { background-position: 200% 0, 200% 0; }
+  100% { background-position: -200% 0, -200% 0; }
 }
 @keyframes starTwinkle {
   0%, 100% { opacity: 0.4; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ========== 左上角导航栏标题：单独改为新文案，中间大标题保持不变 ========== */
+.site-name {
+  font-size: 0 !important;
+}
+.site-name::after {
+  content: "来场简单的旅行，我们说走就走";
+  font-size: 16px;
+  font-weight: 600;
 }
