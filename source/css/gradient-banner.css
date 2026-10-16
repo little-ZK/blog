@@ -461,22 +461,24 @@ a, button, .btn, [role="button"] {
   animation: none !important;
   overflow: visible !important;
   position: relative;
+  border-radius: 50% !important;
 }
 .avatar-img img {
   transition: transform 0.4s ease;
+  border-radius: 50% !important;
 }
 .avatar-img:hover img {
   animation: avatar_turn_around 6s linear infinite !important;
 }
 
-/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj ========== */
+/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj + 斜横线 ========== */
 .avatar-img::after {
   content: "Johnj";
   position: absolute;
-  bottom: -10px;
-  right: -14px;
+  bottom: -12px;
+  right: -18px;
   font-family: "Caveat", "Dancing Script", "Brush Script MT", cursive;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   white-space: nowrap;
   z-index: 5;
@@ -499,7 +501,10 @@ a, button, .btn, [role="button"] {
   animation: signatureShimmer 2.5s linear infinite;
   /* 发光阴影 */
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-  transform: rotate(-8deg);
+  /* 签名下面斜横线 */
+  border-bottom: 2px solid rgba(255, 215, 0, 0.8);
+  padding-bottom: 2px;
+  transform: rotate(-10deg);
 }
 /* 闪光扫过动画 */
 @keyframes signatureShimmer {
@@ -510,9 +515,9 @@ a, button, .btn, [role="button"] {
 .avatar-img::before {
   content: "✦";
   position: absolute;
-  top: -6px;
-  right: -6px;
-  font-size: 12px;
+  top: -8px;
+  right: -8px;
+  font-size: 14px;
   color: #fff8dc;
   z-index: 6;
   text-shadow: 0 0 6px #ffd700, 0 0 12px #ffd700;
