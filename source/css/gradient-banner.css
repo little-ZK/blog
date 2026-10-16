@@ -501,9 +501,9 @@ a, button, .btn, [role="button"] {
   animation: signatureShimmer 2.5s linear infinite;
   /* 发光阴影 */
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-  /* 签名下面斜横线 */
-  border-bottom: 2px solid rgba(255, 215, 0, 0.8);
-  padding-bottom: 2px;
+  /* 签名下面斜横线，紧贴文字 */
+  border-bottom: 2px solid rgba(255, 215, 0, 0.85);
+  padding-bottom: 1px;
   transform: rotate(-10deg);
 }
 /* 闪光扫过动画 */
