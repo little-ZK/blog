@@ -471,12 +471,12 @@ a, button, .btn, [role="button"] {
   animation: avatar_turn_around 6s linear infinite !important;
 }
 
-/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj + 流光斜横线 ========== */
+/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj + 流光斜横线 + 小星星 ========== */
 .avatar-img::after {
-  content: "Johnj";
+  content: "Johnj ✦";
   position: absolute;
   bottom: -10px;
-  right: -16px;
+  right: -18px;
   font-family: "Caveat", "Dancing Script", "Brush Script MT", cursive;
   font-size: 24px;
   font-weight: 700;
@@ -507,9 +507,9 @@ a, button, .btn, [role="button"] {
 .avatar-img::before {
   content: "";
   position: absolute;
-  bottom: -11px;
-  right: -16px;
-  width: 52px;
+  bottom: -9px;
+  right: -18px;
+  width: 56px;
   height: 2px;
   z-index: 5;
   background: linear-gradient(
