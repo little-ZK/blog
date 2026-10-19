@@ -1,0 +1,73 @@
+/* ========== 文章点赞按钮样式（独立文件，不影响主题原有样式）========== */
+.post-like-wrap {
+  text-align: center;
+  margin: 2rem 0 0.5rem;
+}
+.post-like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  font-family: "YouYuan", "幼圆", "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  color: #1f3b63;
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: saturate(150%) !important;
+  -webkit-backdrop-filter: saturate(150%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 6px 18px rgba(72, 128, 255, 0.18) !important;
+  transition: all 0.35s ease;
+  user-select: none;
+}
+.post-like-btn .like-icon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  flex-shrink: 0;
+}
+.post-like-btn .like-icon::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  clip-path: polygon(50% 100%, 0 38%, 16% 0, 50% 22%, 84% 0, 100% 38%);
+  background: rgba(31, 59, 99, 0.5);
+  transition: all 0.3s ease;
+}
+.post-like-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 26px rgba(255, 122, 184, 0.30) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
+}
+.post-like-btn.liked {
+  color: #fff !important;
+  background: linear-gradient(135deg, #ff7ab8, #ff4f9a) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 8px 24px rgba(255, 79, 154, 0.45) !important;
+}
+.post-like-btn.liked .like-icon::before {
+  background: #fff;
+}
+.post-like-btn .like-count {
+  font-weight: 700;
+  min-width: 18px;
+  text-align: left;
+}
+.post-like-btn.processing {
+  opacity: 0.7;
+  pointer-events: none;
+}
+[data-theme="dark"] .post-like-btn {
+  color: #fff;
+  background: rgba(40, 48, 64, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+[data-theme="dark"] .post-like-btn .like-icon::before {
+  background: rgba(255, 255, 255, 0.6);
+}
+[data-theme="dark"] .post-like-btn.liked {
+  background: linear-gradient(135deg, #ff7ab8, #ff4f9a) !important;
+}

@@ -363,22 +363,22 @@ main.layout,
   pointer-events: none;
 }
 
-/* ========== 文章卡片/正文：60% 不透明，兼顾通透与可读 ========== */
+/* ========== 文章卡片/正文：半透明玻璃，透出背景图 ========== */
 .recent-post-item,
 .post-content,
 #article-container,
 #post {
-  background: rgba(255, 255, 255, 0.6) !important;
-  backdrop-filter: blur(6px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(6px) saturate(140%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 10px 30px rgba(72, 128, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(4px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(4px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 10px 30px rgba(72, 128, 255, 0.12) !important;
 }
 [data-theme="dark"] .recent-post-item,
 [data-theme="dark"] .post-content,
 [data-theme="dark"] #article-container,
 [data-theme="dark"] #post {
-  background: rgba(28, 32, 42, 0.6) !important;
+  background: rgba(28, 32, 42, 0.35) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 /* 文章正文文字颜色加深，更易读 */
@@ -471,8 +471,7 @@ a, button, .btn, [role="button"] {
   animation: avatar_turn_around 6s linear infinite !important;
 }
 
-/* ========== 头像右下角：签名 Johnj（流光）+ 加长斜横线（流光）+ 右上角小星星 ========== */
-/* 签名文字：单独一层 background-clip:text 流光，最可靠 */
+/* ========== 头像右下角：王者荣耀风格闪光手写签名 Johnj + 流光斜横线 ========== */
 .avatar-img::after {
   content: "Johnj";
   position: absolute;
@@ -483,6 +482,7 @@ a, button, .btn, [role="button"] {
   font-weight: 700;
   white-space: nowrap;
   z-index: 5;
+  /* 流光渐变文字 */
   background: linear-gradient(
     90deg,
     #ffd700 0%,
@@ -499,16 +499,17 @@ a, button, .btn, [role="button"] {
   -webkit-text-fill-color: transparent;
   color: transparent;
   animation: signatureShimmer 2.5s linear infinite;
+  /* 发光阴影 */
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
   transform: rotate(-10deg);
 }
-/* 加长斜横线：独立渐变条，紧贴签名底部，同步流光，书写感 */
+/* 流光斜横线：和签名一体，同步闪光，紧贴字母底部 */
 .avatar-img::before {
   content: "";
   position: absolute;
-  bottom: -13px;
+  bottom: -11px;
   right: -16px;
-  width: 92px;
+  width: 52px;
   height: 2px;
   z-index: 5;
   background: linear-gradient(
@@ -526,109 +527,46 @@ a, button, .btn, [role="button"] {
   filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
   transform: rotate(-10deg);
 }
-/* 头像右上角小星星：极小，星光迸溅 */
-.avatar-img img::before {
-  content: "✦";
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  font-size: 9px;
-  color: #fff8dc;
-  z-index: 6;
-  text-shadow: 0 0 6px #ffd700, 0 0 12px #ffd700;
-  animation: starTwinkle 1.5s ease-in-out infinite;
-}
 /* 闪光扫过动画：签名和横线同步 */
 @keyframes signatureShimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
-@keyframes starTwinkle {
-  0%, 100% { opacity: 0.4; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+/* ========== Follow Me 按钮：悬停时蓝色变绿色 ========== */
+#card-info-btn,
+.card-info-btn {
+  transition: all 0.3s ease !important;
+}
+#card-info-btn:hover,
+.card-info-btn:hover {
+  background-color: #2ecc71 !important;
+  border-color: #27ae60 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4) !important;
+  transform: translateY(-2px);
 }
 
-/* ========== 左上角导航栏标题：单独改为新文案，中间大标题保持不变 ========== */
-.site-name {
-  font-size: 0 !important;
-}
-.site-name::after {
-  content: "来场简单的旅行，我们说走就走";
-  font-size: 16px;
-  font-weight: 600;
+/* ========== 浏览器滚动条：棒棒糖样式 ========== */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* ========== 文章点赞按钮：彩色液态玻璃 ========== */
-.post-like-wrap {
-  text-align: center;
-  margin: 2rem 0 0.5rem;
-}
-.post-like-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 28px;
-  font-family: "YouYuan", "幼圆", "Microsoft YaHei", sans-serif;
-  font-size: 15px;
-  color: #1f3b63;
-  background: rgba(255, 255, 255, 0.5) !important;
-  backdrop-filter: saturate(150%) !important;
-  -webkit-backdrop-filter: saturate(150%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
-  border-radius: 999px !important;
-  box-shadow: 0 6px 18px rgba(72, 128, 255, 0.18) !important;
-  cursor: url("https://aka.doubaocdn.com/s/xCEYfJTbVr") 20 20, pointer !important;
-  transition: all 0.35s ease;
-  user-select: none;
-}
-.post-like-btn .like-icon {
-  width: 18px;
-  height: 18px;
-  position: relative;
-}
-.post-like-btn .like-icon::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  width: 14px;
-  height: 14px;
-  clip-path: polygon(50% 100%, 0 38%, 16% 0, 50% 22%, 84% 0, 100% 38%);
-  background: rgba(31, 59, 99, 0.5);
-  transition: all 0.3s ease;
-}
-.post-like-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 10px 26px rgba(255, 122, 184, 0.30) !important;
-  border-color: rgba(255, 255, 255, 0.9) !important;
-}
-.post-like-btn.liked {
-  color: #fff !important;
-  background: linear-gradient(135deg, #ff7ab8, #ff4f9a) !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 8px 24px rgba(255, 79, 154, 0.45) !important;
-}
-.post-like-btn.liked .like-icon::before {
-  background: #fff;
-}
-.post-like-btn .like-count {
-  font-weight: 700;
-  min-width: 18px;
-  text-align: left;
-}
-.post-like-btn.processing {
-  opacity: 0.7;
-  pointer-events: none;
-}
-[data-theme="dark"] .post-like-btn {
-  color: #fff;
-  background: rgba(40, 48, 64, 0.6) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-}
-[data-theme="dark"] .post-like-btn .like-icon::before {
-  background: rgba(255, 255, 255, 0.6);
-}
-[data-theme="dark"] .post-like-btn.liked {
-  background: linear-gradient(135deg, #ff7ab8, #ff4f9a) !important;
+/* 滚动条轨道（背景） */
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
+/* 滚动条滑块（棒棒糖） */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f6416c 0%, #ff9a9e 30%, #ffd56b 100%);
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 8px rgba(246, 65, 108, 0.3);
+}
+
+/* 滑块悬停 */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e91e63 0%, #ff6b9d 30%, #ffc107 100%);
+  box-shadow: 0 0 12px rgba(246, 65, 108, 0.5);
+}
